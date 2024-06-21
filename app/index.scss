@@ -1,0 +1,124 @@
+@use '../styles/mixins/mixins' as *;
+@use '../styles/variables/variables' as *;
+
+main{
+  background-image: url('../public/wallpaper.png');
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center
+}
+
+.rotateX{
+  transform: rotate(0deg);
+  transition-duration: .2s;
+}
+
+.rotateY{
+  transform: rotate(180deg);
+  transition-duration: .2s;
+}
+
+.page{
+  @include flex-position(
+    flex,
+    column,
+    auto,
+    center,
+    center,
+    center
+  );
+  position: absolute;
+  bottom: 0;
+  background-color: $cor-bg-vermelho;
+  background-repeat: no-repeat;
+  
+  &__logo{
+    width: 100vw;
+    position: relative;
+    top: -2rem;
+
+    h1{
+      font-size: $tam-font-30;
+    }
+
+    h2{
+      font-size: $tam-font-22;
+    }
+  }
+  
+  &__logo img{
+    position: relative;
+    top: -.5rem;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: 7px solid $cor-bg-vermelho;
+  }
+  
+  &__content{
+    img{
+      margin-bottom: .5rem;
+    }
+    svg{
+      margin: 1rem;
+      transition-duration: .2s;
+      
+      &:hover{
+        transform: translateY(-.2rem);
+        transition-duration: .2s;
+      }
+    }
+
+  }
+  
+  &__btntoggle{
+    cursor: pointer;
+    margin: 1rem;
+  }
+}
+
+@include viewport(xl){
+  .page__content{
+    width: 60vw;
+  }
+}
+
+@include viewport(lg){
+  .page__content{
+    width: 70vw;
+  }
+}
+
+@include viewport(md){
+  .page__logo{
+    img{
+      width: 8rem;
+      height: 8rem;
+    }
+
+    h1{
+      font-size: $tam-font-22;
+    }
+
+    h2{
+      font-size: $tam-font-16;
+    }
+  }
+
+  .page__content{
+    width: 80vw;
+
+    svg{
+      width: 18px;
+      margin: .7rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@include viewport(md){
+  .page__content{
+    width: 96vw;
+  }
+}
