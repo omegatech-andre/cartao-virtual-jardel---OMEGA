@@ -1,7 +1,7 @@
 @use '../styles/mixins/mixins' as *;
 @use '../styles/variables/variables' as *;
 
-main{
+main {
   background-image: url('../public/wallpaper.png');
   width: 100vw;
   height: 100vh;
@@ -9,45 +9,43 @@ main{
   background-position: center
 }
 
-.rotateX{
+.rotateX {
   transform: rotate(0deg);
   transition-duration: .2s;
 }
 
-.rotateY{
+.rotateY {
   transform: rotate(180deg);
   transition-duration: .2s;
 }
 
-.page{
-  @include flex-position(
-    flex,
+.page {
+  @include flex-position(flex,
     column,
     auto,
     center,
     center,
-    center
-  );
+    center);
   position: absolute;
   bottom: 0;
   background-color: $cor-bg-vermelho;
   background-repeat: no-repeat;
-  
-  &__logo{
+
+  &__logo {
     width: 100vw;
     position: relative;
     top: -2rem;
 
-    h1{
+    h1 {
       font-size: $tam-font-30;
     }
 
-    h2{
+    h2 {
       font-size: $tam-font-22;
     }
   }
-  
-  &__logo img{
+
+  &__logo img {
     position: relative;
     top: -.5rem;
     width: 10rem;
@@ -55,61 +53,90 @@ main{
     border-radius: 50%;
     border: 7px solid $cor-bg-vermelho;
   }
-  
-  &__content{
-    img{
+
+  &__content {
+    &--btn {
+      @include button-model;
+      margin-bottom: .5rem;
+
+      &:hover {
+        @include button-model-hover;
+      }
+    }
+
+    a {
+      cursor: pointer;
+    }
+
+    img {
       margin-bottom: .5rem;
     }
-    svg{
+
+    svg {
       margin: 1rem;
       transition-duration: .2s;
-      
-      &:hover{
+
+      &:hover {
         transform: translateY(-.2rem);
         transition-duration: .2s;
       }
     }
 
   }
-  
-  &__btntoggle{
+
+  &__btntoggle {
     cursor: pointer;
     margin: 1rem;
   }
+
+  &__modal {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    backdrop-filter: blur(10px);
+    background-color: #55555510;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--content {
+      display: flex;
+    }
+  }
 }
 
-@include viewport(xl){
-  .page__content{
+@include viewport(xl) {
+  .page__content {
     width: 60vw;
   }
 }
 
-@include viewport(lg){
-  .page__content{
+@include viewport(lg) {
+  .page__content {
     width: 70vw;
   }
 }
 
-@include viewport(md){
-  .page__logo{
-    img{
+@include viewport(md) {
+  .page__logo {
+    img {
       width: 8rem;
       height: 8rem;
     }
 
-    h1{
+    h1 {
       font-size: $tam-font-22;
     }
 
-    h2{
+    h2 {
       font-size: $tam-font-16;
     }
   }
 
-  .page__content{
+  .page__content {
     width: 80vw;
 
-    svg{
+    svg {
       width: 18px;
       margin: .7rem;
       margin-bottom: 0;
@@ -117,8 +144,8 @@ main{
   }
 }
 
-@include viewport(md){
-  .page__content{
+@include viewport(md) {
+  .page__content {
     width: 96vw;
   }
 }

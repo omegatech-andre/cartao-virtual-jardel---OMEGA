@@ -4,14 +4,12 @@
 
 // FLEX-BOX------------------------------------------
 
-@mixin flex-position(
-    $display,
+@mixin flex-position($display,
     $flex-direction,
     $margin,
     $justify-content,
     $text-align,
-    $align-items
-){
+    $align-items) {
     display: $display;
     flex-direction: $flex-direction;
     margin: $margin;
@@ -20,11 +18,33 @@
     align-items: $align-items;
 }
 
+// BUTTON-MODEL--------------------------------------
+
+@mixin button-model() {
+    padding: .5rem 1rem;
+    background-color: $cor-bg-vermelho;
+    border-radius: $borda-pequena;
+    border: $borda;
+    box-shadow: $borda-shadow;
+    color: $cor-font-branco;
+    font-size: $tam-font-20;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition-duration: .2s;
+}
+
+@mixin button-model-hover() {
+    background-color: $cor-bg-vermelho-hover;
+    transition-duration: .2s;
+    transform: translateY(-.1rem);
+}
+
 
 // MEDIA-QUERY---------------------------------------
 
-@mixin viewport($breakpoints){
-    $devices:(
+@mixin viewport($breakpoints) {
+    $devices: (
         xs: 320px,
         sm: 480px,
         smd: 600px,
@@ -32,9 +52,9 @@
         lg: 992px,
         xl: 1200px
     );
-    $breakpoint: map-get($devices, $breakpoints);
-    
-    @media(max-width: $breakpoint){
-        @content
-    }
+$breakpoint: map-get($devices, $breakpoints);
+
+@media(max-width: $breakpoint) {
+    @content
+}
 }
